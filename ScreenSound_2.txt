@@ -1,0 +1,82 @@
+//o objetivo é acessar o endereço da api e pegar todas as músicas (endpoint)
+//tipo responsável para auxiliar essa tarefa: using (HttpClient client = new HttpClient())
+//gerenciando um recurso
+//cria uma variavel do tipo string para acessar os métodos client e assim acessar a api
+//Async- método assincrono
+//await- espera a tarefa ser concluida
+//caso aconteça algum erro com a APi- utiliza-se o trycatch para capturar o erro
+
+//exemplo de outra requisição utilizando um API do game of thrones, recursos de um dos personagens da série com o ID igual a 583
+/*
+using (HttpClient client = new HttpClient())
+{
+    string resposta = await client.GetStringAsync("https://anapioficeandfire.com/api/characters/583");
+    Console.WriteLine(resposta);
+}
+*/
+
+//toda a resposta está do tipo string,  porém, existem outros tipos de variaveis e será necessário tratar,
+para cria-se a pasta Modelos - e classe Musica.cs
+//para pegar os dados da api
+//escolhe os dados que deseja - artista, musica, duração e genero
+//agora em musica.cs
+//cria a propriedade Nome - que vai ser apontada para o campo song do JSON através do atributo [JsonPropertyName("song")]
+//o ? significa que pode ser nulo
+//faz para as outras infos
+//cria um método para exibir as infos
+
+//agora em program.cs
+//cria a variavel musicas para realizar a desserialização (JsonSetializer), converter o arquivo json para tipo list de Musica
+//para reconhecer a Musica é necessário adicionar no inicio do program.cs o using com a diretriz de onde está a class Musica
+
+//agora utilizando o Linq
+//criar a pasta filtros; criar o arquivo LinqFilter.cs
+//Desafio é: Exibir todos os generos musicais da lista
+//criar um método que não precisa ser inicializado (new) -- nome do método - FiltrarTodosOsGenerosMusicais, que recebe a list de Musica
+//criar uma variavel para selecioanr os generos; distinct - para não ter generos repetidos; to list - para gerar a lista dos generos
+//fazer um foreach para mostar todos os generos
+//em Program.cs; chamar o método através do LinqFilter
+//Desafio é: Ordenar todos os artistas por nome
+//em Filtros, criar o arquivo LinqOrder
+//criar o método  ExibirListaDeArtistasOrdenados que recebe uma List de Musica
+//criar a variavel artistaOrdenados
+//varrer a variavel através do foreach
+//Desafio é: Filtrar musicas de um artista
+//em LinqFilter
+//criar a propriedade FiltrarMusicasDeUmArtista, que recebe a List de Musica, e o nome do artista
+//musicasDoArtista -> vai pesquisar na lista de Musica o nome do artista e gerar uma lista, foreach para
+percorrer a lista e mostrar os nomes da musica
+//em program.cs
+//LINQ- bliblioteca do .net, usada para separar da onde pega os dados, e separa em métodos, ope´rações em listas
+//Desafio é: filtrar as musicas pelo ano
+//em musica.cs
+//AnoString - criar uma propriedade para receber o campo Ano
+//variavel int Ano - p/ converter o tipo do AnoString para inteiro
+//De forma resumida, o código filtra as músicas de um determinado ano, as ordena pelo nome, 
+seleciona apenas o nome das músicas, remove as duplicidades e retorna uma lista com os nomes 
+das músicas correspondentes ao ano especificado
+//Desafio- exportar da memória do programa para um arquivo JSON
+
+//Desafio- trazer a propriedade key, porém, a propriedade key cada valor do Key equivale a:
+	0 = C
+	1 = C#
+	2 = D
+	3 = D#
+	4 = E
+	5 = F
+//Desafio- filtrar as musicas conforme a tonalidade
+
+//Descrição
+Neste curso abrangente, você explorou as funcionalidades do C# para criar e manipular um modelo de músicas. 
+Através da utilização de requisições, tratamento de exceções e desserialização de JSON, você aprendeu a exibir os dados no console de forma organizada.
+Com base nos desafios propostos, você desenvolveu habilidades como listar gêneros musicais, ordenar artistas, filtrar músicas e criar uma lista das músicas preferidas.
+ Além disso, você aprendeu a criar arquivos JSON e conectá-los à plataforma Vercel para exibir a lista de músicas. Ao longo do curso, também foram abordados tópico
+como leitura de campos, deserialização de dados e criação de listas de tonalidades musicais. Essas habilidades são fundamentais para o desenvolvimento de
+programas estruturados em C# e proporcionam uma base sólida para futuros projetos. Parabéns por ter concluído o curso e continue explorando as possibilidades empolgantes do C#!
+
+
+
+
+
+
+
